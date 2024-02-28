@@ -21,9 +21,9 @@ $string['endpoint'] = 'Endpoint';
 $string['endpoint_desc'] = 'Endpoint url';
 
 $string['openaisettings'] = 'OpenAI settings';
-$string['openaisettings_help'] = 'Settings for OpenAI services';
+$string['openaisettings_help'] = 'Settings for Large Language Model services';
 $string['apikey'] = 'OpenAI API Key';
-$string['apikey_desc'] = 'The API Key for your OpenAI account, from https://platform.openai.com/account/api-keys . Sample key looks like this: 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';
+$string['apikey_desc'] = 'The API Key for your OpenAI account, from https://platform.openai.com/account/api-keys . Sample key looks like this: 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. This is ignored by Ollama';
 $string['emptyapikey'] = 'The API setting is empty, it must be set in plugin settins';
 
 $string['sourceoftruth'] = 'Source of truth';

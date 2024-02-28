@@ -37,11 +37,11 @@ class ai {
 
     private string $endpoint;
 
-    public function __construct($model = '') {
-            $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
-            $this->model = get_config('tool_aiconnect', 'model');
-            $this->temperature = get_config('tool_aiconnect', 'temperature', 0.5);
-            $this->endpoint = get_config('tool_aiconnect', 'endpoint');
+    public function __construct($model = null) {
+        $this->model = $model ?? get_config('tool_aiconnect', 'model');
+        $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
+        $this->temperature = get_config('tool_aiconnect', 'temperature');
+        $this->endpoint = get_config('tool_aiconnect', 'endpoint');
     }
 
     /**
