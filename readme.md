@@ -1,6 +1,6 @@
 # Moodle tool_aiconnect
 
-This plugin is a fork of the local_ai_connector plugin https://github.com/enovation/moodle-local_ai_connector created by Irish Moodle partner ennovation.
+This plugin is a fork of the local_ai_connector plugin https://github.com/enovation/moodle-local_ai_connector created by Irish Moodle partner ennovation. For custom development and consultancy for this plugin contact Moodle Partner Catalyst EU (https://www.catalyst-eu.net/).
 
 The main difference is that it can be configured for providers of AI Large language models other than OpenAI's ChatGPT, and was developed to target the Ollama self hosting tool. Support for image related LLM's (DALL-E/Stable Diffusion) has been removed
 
