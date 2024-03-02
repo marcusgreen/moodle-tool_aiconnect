@@ -43,7 +43,7 @@ $response = $ai->prompt('Please generate a response for this prompt.');
 ## Configuration Settings
 To configure the AI class and customize its behavior, you can use the following settings at /admin/settings.php?section=tool_aiconnect
 
-**OpenAI API Key**: Provide the API key for authentication with OpenAI services.
+**OpenAI API Key**: Provide the API key for authentication with OpenAI services (ignored by Ollama)
 
 **Source of Truth:** Specify the source of truth for the AI model.
 
