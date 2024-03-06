@@ -68,7 +68,7 @@ if ($hassiteconfig) {
         'tool_aiconnect/temperature',
         get_string('temperature', 'tool_aiconnect'),
         get_string('temperature_desc', 'tool_aiconnect'),
-        '0.0',
+        0,
         PARAM_FLOAT
     ));
 
@@ -98,8 +98,6 @@ if ($hassiteconfig) {
     $link = html_writer::link($url, get_string('testaiservices', 'tool_aiconnect'));
     $settings->add(new admin_setting_heading('testaiconfiguration', new lang_string('testaiconfiguration', 'tool_aiconnect'),
         new lang_string('testoutgoingmaildetail', 'admin', $link)));
-
-
-        $ADMIN->add('tools', $settings);
+    $ADMIN->add('tools', $settings);
 
 }
