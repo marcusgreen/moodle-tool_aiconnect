@@ -54,7 +54,6 @@ if ($gptresult && !isset($gptresult['curl_error'])) {
     $gptinfo = "Inactive 🔴, cURL error: " . $gptresult['curl_error'];
 }
 $PAGE->set_url('/local/tool_aiconnect/classes/ai/test.php');
-xdebug_break();
 echo $OUTPUT->header();
 ?>
 
