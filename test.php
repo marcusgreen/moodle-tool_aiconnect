@@ -54,7 +54,7 @@ if ($gptresult && !isset($gptresult['curl_error'])) {
     $gptinfo = "Inactive 🔴, cURL error: " . $gptresult['curl_error'];
 }
 $PAGE->set_url('/local/tool_aiconnect/classes/ai/test.php');
-
+xdebug_break();
 echo $OUTPUT->header();
 ?>
 
@@ -77,6 +77,10 @@ echo $OUTPUT->header();
         </tr>
         <tr>
             <td>Execution time: <?php echo $gptresult['execution_time'];?> ms</td>
+        </tr>
+        <tr>
+            <td>Response: <?php echo $gptresult['response']['choices'][0]['message']['content'];?> </td>
+        </tr>
         </tr>
     </table>
     <?php
