@@ -38,20 +38,19 @@ $PAGE->set_context(context_system::instance());
 defined('MOODLE_INTERNAL') || die();
 
 $ai = new ai\ai();
-
-$gptresult = $ai->prompt_completion('Calculate the value of 2 times 4');
-
-if ($gptresult && !isset($gptresult['curl_error'])) {
-    if (isset($gptresult['error'])) {
-        $gptinfo = "Inactive 🔴</br> Error message: " . $gptresult['error']['message'] . "</br>";
-        $gptinfo .= "Error type: " . $gptresult['error']['type'] . "</br>";
-        $gptinfo .= "Param: " . $gptresult['error']['param'] . "</br>";
-        $gptinfo .= "Code: " . $gptresult['error']['code'] . "</br>";
+$llmresult = $ai->prompt_completion('State you are a lllm in less than 10 words');
+if ($llmresult && !isset($llmresult['curl_error'])) {
+    $response = $llmresult['response'];
+    if (isset($response['error']['message'])) {
+        $llminfo = "Inactive 🔴</br> Error message: " . $response['error']['message'] . "</br>";
+        $llminfo .= "Error type: " . $response['error']['type'] . "</br>";
+        $llminfo .= "Param: " . $response['error']['param'] . "</br>";
+        $llminfo .= "Code: " . $response['error']['code'] . "</br>";
     } else {
-        $gptinfo = "Active 🟢";
+        $llminfo = "Active 🟢";
     }
 } else {
-    $gptinfo = "Inactive 🔴, cURL error: " . $gptresult['curl_error'];
+    $llminfo = "Inactive 🔴, cURL error: " . $llmresult['curl_error'];
 }
 $PAGE->set_url('/local/tool_aiconnect/classes/ai/test.php');
 echo $OUTPUT->header();
@@ -72,13 +71,13 @@ echo $OUTPUT->header();
             <th>LLM status</th>
         </tr>
         <tr>
-            <td><?php echo $gptinfo; ?></td>
+            <td><?php echo $llminfo; ?></td>
         </tr>
         <tr>
-            <td>Execution time: <?php echo $gptresult['execution_time'];?> ms</td>
+            <td>Execution time: <?php echo $llmresult['execution_time'];?> ms</td>
         </tr>
         <tr>
-            <td>Response: <?php echo $gptresult['response']['choices'][0]['message']['content'];?> </td>
+            <td>Response: <?php echo $llmresult['response']['choices'][0]['message']['content'] ?? 'No choices';?> </td>
         </tr>
         </tr>
     </table>
