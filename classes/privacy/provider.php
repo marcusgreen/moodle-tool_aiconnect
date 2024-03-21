@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
- * AI class
+ * Privacy provider class
  *
- * @package    tool_aiconnect
- * @copyright 2024 Marcus Green
+ * @package   tool_aiconnect
+ * @copyright  2024 Marcus Green
  * @author Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +26,20 @@ namespace tool_aiconnect\privacy;
 
 use core_privacy\local\metadata\collection;
 
+/**
+ * Privacy Subsystem for tool_aiconnect
+ *
+ * @copyright  2024 Marcus Green
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class provider {
+
+    /**
+     * Returns meta data about this system.
+     *
+     * @param   collection     $collection The initialised collection to add items to.
+     * @return  collection     A listing of user data stored through this system.
+     */
     public static function get_metadata(collection $collection): collection {
         $collection->add_external_location_link('lti_client', [
             'prompttext' => 'privacy:metadata:tool_aiconnect:prompttext',

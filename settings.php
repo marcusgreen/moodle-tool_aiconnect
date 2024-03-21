@@ -28,7 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 if ($hassiteconfig) {
     $settings = new admin_settingpage('tool_aiconnect', get_string('pluginname', 'tool_aiconnect'));
 
-    // .
     $name = new lang_string('openaisettings', 'tool_aiconnect');
     $description = new lang_string('openaisettings_help', 'tool_aiconnect');
     $settings->add(new admin_setting_heading('xopenaisettings', $name, $description));
@@ -40,8 +39,6 @@ if ($hassiteconfig) {
         get_string('apikey_desc', 'tool_aiconnect'),
         ''
     ));
-
-
 
     $settings->add(new admin_setting_configtextarea(
         'tool_aiconnect/source_of_truth',

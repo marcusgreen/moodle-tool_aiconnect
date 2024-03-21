@@ -14,6 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Language strings for this plugin
+ *
+ * @package    tool_aiconnect
+ * @copyright  2024 Marcus Green
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+
 $string['misssingmodelerror'] = 'No model has been provided for the call';
 $string['pluginname'] = 'AI Connect tool';
 

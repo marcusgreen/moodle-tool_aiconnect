@@ -23,7 +23,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace tool_aiconnect;
+namespace tool_aiconnect\ai;
 
 require_once(__DIR__ . '/../../../config.php');
 
@@ -37,7 +37,9 @@ $PAGE->set_context(context_system::instance());
 
 defined('MOODLE_INTERNAL') || die();
 
-$ai = new ai\ai();
+/**@var tool_aiconnect\ai $ai */
+$ai = new ai();
+
 $llmresult = $ai->prompt_completion('State you are a lllm in less than 10 words');
 if ($llmresult && !isset($llmresult['curl_error'])) {
     $response = $llmresult['response'];

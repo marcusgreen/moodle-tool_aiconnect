@@ -14,6 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Version information. When a new version is released the version is incremented
+ *
+ * @package    tool_aiconnect
+ * @copyright  2024 Marcus Green
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tool_aiconnect';

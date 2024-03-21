@@ -22,21 +22,47 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
 namespace tool_aiconnect\ai;
 
 use curl;
 use moodle_exception;
-
+/**
+ * Contains most functionality
+ *
+ */
 class ai {
 
+    /**
+     * API Key for chatgpt, ignored by ollama
+     *
+     * @var string
+     */
     private string $openaiapikey;
 
+    /**
+     * LLM Model e.g. llama2 or gpt4
+     *
+     * @var string
+     */
     private $model;
+
+    /**
+     * The model used to generate the completion.
+     * @var float
+     */
     private float $temperature;
 
+    /**
+     * Endpoint URL
+     * @var string
+     */
     private string $endpoint;
 
+    /**
+     * Initialise default settings
+     *
+     * @param string $model
+     */
     public function __construct($model = null) {
         $this->model = $model ?? get_config('tool_aiconnect', 'model');
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
@@ -45,11 +71,11 @@ class ai {
     }
 
     /**
-     * Makes a request to the specified URL with the given data and API key.
+     * Makes a request with the given data and API key.
      *
-     * @param string $url The URL to make the request to.
      * @param array $data The data to send with the request.
      * @param string $apikey The API key to authenticate the request.
+     * @param string $multipart TODO document this parameter
      * @return array The response from the request.
      * @throws moodle_exception If the API key is empty.
      */
@@ -114,7 +140,6 @@ class ai {
     /**
      * Retrieves the data for the prompt based on the URL and prompt text.
      *
-     * @param string $url The prompt URL.
      * @param string $prompttext The prompt text.
      * @return array The prompt data.
      */

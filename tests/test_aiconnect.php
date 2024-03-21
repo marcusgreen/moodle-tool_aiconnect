@@ -15,24 +15,39 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe file test_aiconnect
+ * A lightweight mainly confirming installation works
  *
  * @package    tool_aiconnect
- * @copyright  2024 2924 Marcus Green
+ * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace tool_aiconnect\ai;
+namespace tool_aiconnect;
 
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
-use PHPUnit\Framework\ExpectationFailedException;
-
+/**
+ * Basic setup and test run to confirm it installs
+ *
+ * @package tool_aiconnect
+ */
 class test_aiconnect extends \advanced_testcase {
-    /**
-     *
-     * @var \stdClass $ai
-     */
-    public $ai;
 
+    /**
+     * Where most of the functionality lives
+     *
+     * @var ai $ai
+     *
+     */
+
+    /**
+     * The class with most of the functionality
+     * @var ai
+     */
+     public $ai;
+
+    /**
+     * Initialise everything
+     *
+     * @return void
+     */
     public function setUp(): void {
         $this->ai = new ai();
     }
@@ -40,7 +55,7 @@ class test_aiconnect extends \advanced_testcase {
      * This doesn't do anything especially useful.
      * @return void
      */
-    public function test_prompt_completion() :void{
+    public function test_prompt_completion() :void {
         $result = $this->ai->prompt_completion('query');
         $this->assertIsArray($result);
     }
