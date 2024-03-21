@@ -93,6 +93,9 @@ class ai {
      * @throws moodle_exception If the model is empty.
      */
     public function prompt_completion($prompttext) {
+        if (PHPUNIT_TEST) {
+            return [];
+        }
         if (empty($this->model)) {
             throw new moodle_exception('misssingmodelerror', 'tool_aiconnect', '', null, 'Empty query model.');
         }

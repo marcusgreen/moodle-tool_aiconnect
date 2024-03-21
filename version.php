@@ -17,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tool_aiconnect';
-$plugin->version = 2023052601;
+$plugin->version = 2024032000;
 $plugin->requires = 2022112800;
 $plugin->release = '4.1.1';
 
