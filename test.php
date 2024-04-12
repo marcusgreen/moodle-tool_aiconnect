@@ -79,7 +79,7 @@ echo $OUTPUT->header();
             <td>Execution time: <?php echo $llmresult['execution_time'];?> ms</td>
         </tr>
         <tr>
-            <td>Response: <?php echo $llmresult['response']['choices'][0]['message']['content'] ?? 'No choices';?> </td>
+            <td>Response to "'State you are a lllm in less than 10 words:' <?php echo $llmresult['response']['choices'][0]['message']['content'] ?? 'No choices';?> </td>
         </tr>
         </tr>
     </table>

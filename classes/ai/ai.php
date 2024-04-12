@@ -67,7 +67,7 @@ class ai {
         $this->model = $model ?? get_config('tool_aiconnect', 'model');
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
-        $this->endpoint = get_config('tool_aiconnect', 'endpoint');
+        $this->endpoint = trim(get_config('tool_aiconnect', 'endpoint'));
     }
 
     /**
