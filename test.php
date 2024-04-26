@@ -39,8 +39,8 @@ defined('MOODLE_INTERNAL') || die();
 
 /**@var tool_aiconnect\ai $ai */
 $ai = new ai();
-
-$llmresult = $ai->prompt_completion('State you are a lllm in less than 10 words');
+$prompt = 'State the name and type of system you are';
+$llmresult = $ai->prompt_completion($prompt);
 if ($llmresult && !isset($llmresult['curl_error'])) {
     $response = $llmresult['response'];
     if (isset($response['error']['message'])) {
@@ -79,7 +79,8 @@ echo $OUTPUT->header();
             <td>Execution time: <?php echo $llmresult['execution_time'];?> ms</td>
         </tr>
         <tr>
-            <td>Response to "'State you are a lllm in less than 10 words:' <?php echo $llmresult['response']['choices'][0]['message']['content'] ?? 'No choices';?> </td>
+            <td>Response to : <?php echo $prompt.":". $llmresult['response']['choices'][0]['message']['content'] ??
+             'No choices';?> </td>
         </tr>
         </tr>
     </table>
