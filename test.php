@@ -40,16 +40,18 @@ defined('MOODLE_INTERNAL') || die();
 /**@var tool_aiconnect\ai $ai */
 $ai = new ai();
 $prompt = 'State the name and type of system you are';
+xdebug_break();
 $llmresult = $ai->prompt_completion($prompt);
 if ($llmresult && !isset($llmresult['curl_error'])) {
     $response = $llmresult['response'];
     if (isset($response['error']['message'])) {
         $llminfo = "Inactive 🔴</br> Error message: " . $response['error']['message'] . "</br>";
         $llminfo .= "Error type: " . $response['error']['type'] . "</br>";
-        $llminfo .= "Param: " . $response['error']['param'] . "</br>";
+        $llminfo .= "Param: " . isset($response['error']['param']) ?? '' . "</br>";
         $llminfo .= "Code: " . $response['error']['code'] . "</br>";
     } else {
         $llminfo = "Active 🟢";
+        $content = $llmresult['response']['choices'][0]['message']['content'];
     }
 } else {
     $llminfo = "Inactive 🔴, cURL error: " . $llmresult['curl_error'];
@@ -79,8 +81,7 @@ echo $OUTPUT->header();
             <td>Execution time: <?php echo $llmresult['execution_time'];?> ms</td>
         </tr>
         <tr>
-            <td>Response to : <?php echo $prompt.":". $llmresult['response']['choices'][0]['message']['content'] ??
-             'No choices';?> </td>
+            <td>Response to : <?php echo $prompt.":".($content ?? ' No response'); ?> </td>
         </tr>
         </tr>
     </table>

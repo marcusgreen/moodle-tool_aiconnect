@@ -97,15 +97,5 @@ if ($hassiteconfig) {
         new lang_string('testoutgoingmaildetail', 'admin', $link)));
     $ADMIN->add('tools', $settings);
 
-    $settings->add(new admin_setting_configtextarea(
-        'qtype_aitext/jsonprompt',
-        new lang_string('jsonprompt', 'qtype_aitext'),
-        new lang_string('jsonprompt_setting', 'qtype_aitext'),
-        'Return only a JSON object which enumerates a set of 2 elements.The JSON object should be in
-			this format: {feedback":"string","marks":"number"} where marks is a single value summing all marks.',
-        PARAM_RAW,
-        20,
-        6
-    ));
 
 }
