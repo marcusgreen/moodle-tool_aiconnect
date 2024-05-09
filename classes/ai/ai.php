@@ -153,6 +153,30 @@ class ai {
             ];
             return $data;
     }
+    public function get_models() : \stdClass {
+        $url = new \moodle_url($this->endpoint);
+        $ollama = true;
+        // Ollama url.
+        $modelquery = '/api/tags';
+        if ($url->get_host() == 'api.openai.com') {
+            $modelquery = '/v1/models';
+            $ollama = false;
+        }
+
+        $modelsurl = $url->get_scheme().'://'.$url->get_host().':'.$url->get_port().$modelquery;
+        $curl = new curl();
+        $options['CURLOPT_HTTPHEADER'] = ["Authorization: Bearer $this->apikey"];
+
+        $modeldata = json_decode($curl->get($modelsurl, null, $options));
+        if (!$ollama) {
+            $modeldata->models = $modeldata->data;
+            foreach ($modeldata->models as $model) {
+                $model->name = $model->id;
+            }
+        }
+
+        return $modeldata;
+    }
 
 }
 
