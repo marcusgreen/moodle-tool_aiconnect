@@ -40,7 +40,7 @@ defined('MOODLE_INTERNAL') || die();
 /**@var tool_aiconnect\ai $ai */
 $ai = new ai();
 $prompt = 'State the name and type of system you are';
-xdebug_break();
+
 $llmresult = $ai->prompt_completion($prompt);
 if ($llmresult && !isset($llmresult['curl_error'])) {
     $response = $llmresult['response'];

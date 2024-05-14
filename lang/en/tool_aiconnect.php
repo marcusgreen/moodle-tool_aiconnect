@@ -24,6 +24,7 @@
 
 
 $string['misssingmodelerror'] = 'No model has been provided for the call';
+$string['endpointerror'] = 'Endpoint error';
 $string['pluginname'] = 'AI Connect tool';
 
 $string['endpoint'] = 'Endpoint';

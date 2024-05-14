@@ -64,7 +64,7 @@ class ai {
      * @param string $model
      */
     public function __construct($model = null) {
-        $this->model = $model ?? get_config('tool_aiconnect', 'model');
+        $this->model = $model ?? trim(explode(',',get_config('tool_aiconnect','model'))[0]);
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
         $this->endpoint = trim(get_config('tool_aiconnect', 'endpoint'));
@@ -99,16 +99,22 @@ class ai {
             "CURLOPT_HTTPHEADER" => $headers,
         ];
         $start = microtime(true);
+        $jsonresponse = $curl->post($this->endpoint, json_encode($data), $options);
+        $response = json_decode($jsonresponse,true);
+        if ($response == null) {
+            return ['curl_error' => $curl->get_info()->http_code, 'execution_time' => $executiontime];
+        }
+        xdebug_break();
 
-        $response = $curl->post($this->endpoint, json_encode($data), $options);
+        if(isset($response['error'])){
+             throw new moodle_exception('endpointerror', 'tool_aiconnect', '', null,
+                $response['error']['message']);
+        }
 
         $end = microtime(true);
         $executiontime = round($end - $start, 2);
 
-        if (json_decode($response) == null) {
-            return ['curl_error' => $response, 'execution_time' => $executiontime];
-        }
-        return ['response' => json_decode($response, true), 'execution_time' => $executiontime];
+        return ['response' => $response, 'execution_time' => $executiontime];
     }
 
     /**
