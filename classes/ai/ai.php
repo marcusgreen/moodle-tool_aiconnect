@@ -79,7 +79,7 @@ class ai {
      * @return array The response from the request.
      * @throws moodle_exception If the API key is empty.
      */
-    private function make_request($data, $apikey, $multipart = null) {
+    private function make_request(array $data, string $apikey, $multipart = null): array {
         global $CFG;
         require_once($CFG->libdir . '/filelib.php');
         if (empty($apikey)) {
