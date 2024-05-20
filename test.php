@@ -38,7 +38,6 @@ $PAGE->set_context(context_system::instance());
 defined('MOODLE_INTERNAL') || die();
 
 /**@var tool_aiconnect\ai $ai */
-xdebug_break();
 $ai = new ai();
 $prompt = 'State the name and type of system you are';
 

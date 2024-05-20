@@ -59,9 +59,7 @@ class test_aiconnect extends \advanced_testcase {
      */
     public function test_get_prompt_data() :void {
          $this->assertTrue(true);
-         $mockai = $this->getMockBuilder(ai\ai::class)
-            // ->disableOriginalConstructor()    // you may need the constructor on integration tests only
-             ->getMock();
+         $mockai = $this->getMockBuilder(ai\ai::class)->getMock();
          $getpromptdata = new \ReflectionMethod(
                  ai\ai::class,
                  'get_prompt_data'
