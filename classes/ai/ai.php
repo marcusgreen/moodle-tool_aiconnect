@@ -64,7 +64,7 @@ class ai {
      * @param string $model
      */
     public function __construct($model = null) {
-        $this->model = $model ?? trim(explode(',',get_config('tool_aiconnect','model'))[0]);
+        $this->model = $model ?? trim(explode(',', get_config('tool_aiconnect', 'model'))[0]);
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
         $this->endpoint = trim(get_config('tool_aiconnect', 'endpoint'));
@@ -87,9 +87,9 @@ class ai {
                 'Empty API Key.');
         }
         $headers = $multipart ? [
-            "Content-Type: multipart/form-data"
+            "Content-Type: multipart/form-data",
         ] : [
-            "Content-Type: application/json;charset=utf-8"
+            "Content-Type: application/json;charset=utf-8",
         ];
 
         $headers[] = "Authorization: Bearer $apikey";
@@ -100,13 +100,12 @@ class ai {
         ];
         $start = microtime(true);
         $jsonresponse = $curl->post($this->endpoint, json_encode($data), $options);
-        $response = json_decode($jsonresponse,true);
+        $response = json_decode($jsonresponse, true);
         if ($response == null) {
             return ['curl_error' => $curl->get_info()->http_code, 'execution_time' => $executiontime];
         }
-        xdebug_break();
 
-        if(isset($response['error'])){
+        if (isset($response['error'])) {
              throw new moodle_exception('endpointerror', 'tool_aiconnect', '', null,
                 $response['error']['message']);
         }
@@ -149,7 +148,7 @@ class ai {
      * @param string $prompttext The prompt text.
      * @return array The prompt data.
      */
-    private function get_prompt_data($prompttext) : array {
+    private function get_prompt_data($prompttext): array {
             $data = [
                 'model' => $this->model,
                 'temperature' => $this->temperature,
@@ -159,7 +158,12 @@ class ai {
             ];
             return $data;
     }
-    public function get_models() : \stdClass {
+    /**
+     * Find what models the remote system has available
+     *
+     * @return \stdClass
+     */
+    public function get_models(): \stdClass {
         $url = new \moodle_url($this->endpoint);
         $ollama = true;
         // Ollama url.

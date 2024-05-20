@@ -57,7 +57,7 @@ class test_aiconnect extends \advanced_testcase {
      *
      * @return void
      */
-    public function test_get_prompt_data() :void {
+    public function test_get_prompt_data(): void {
          $this->assertTrue(true);
          $mockai = $this->getMockBuilder(ai\ai::class)->getMock();
          $getpromptdata = new \ReflectionMethod(
@@ -71,13 +71,13 @@ class test_aiconnect extends \advanced_testcase {
              ['myprompt']
          );
          $this->assertStringContainsString("You: myprompt", $result['messages'][0]['content']);
-     }
+    }
 
      /**
-     * This doesn't do anything especially useful.
-     * @return void
-     */
-    public function test_prompt_completion() :void {
+      * This doesn't do anything especially useful.
+      * @return void
+      */
+    public function test_prompt_completion(): void {
         $result = $this->ai->prompt_completion('query');
         $this->assertIsArray($result);
     }
