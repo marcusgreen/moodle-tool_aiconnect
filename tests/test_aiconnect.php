@@ -49,9 +49,33 @@ class test_aiconnect extends \advanced_testcase {
      * @return void
      */
     public function setUp(): void {
-        $this->ai = new ai();
+        $this->ai = new ai\ai();
     }
     /**
+     * Work around the get_prompt_data method
+     * being private
+     *
+     * @return void
+     */
+    public function test_get_prompt_data() :void {
+         $this->assertTrue(true);
+         $mockai = $this->getMockBuilder(ai\ai::class)
+            // ->disableOriginalConstructor()    // you may need the constructor on integration tests only
+             ->getMock();
+         $getpromptdata = new \ReflectionMethod(
+                 ai\ai::class,
+                 'get_prompt_data'
+             );
+         $getpromptdata->setAccessible(true);
+
+         $result = $getpromptdata->invokeArgs(
+             $mockai,
+             ['myprompt']
+         );
+         $this->assertStringContainsString("You: myprompt", $result['messages'][0]['content']);
+     }
+
+     /**
      * This doesn't do anything especially useful.
      * @return void
      */
