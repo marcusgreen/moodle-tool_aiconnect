@@ -59,15 +59,22 @@ class ai {
     private string $endpoint;
 
     /**
+     * response_format
+     * @var string
+     */
+    private string $format;
+
+    /**
      * Initialise default settings
      *
      * @param string $model
      */
-    public function __construct($model = null) {
+    public function __construct(?string $model = null, ?string $format = null) {
         $this->model = $model ?? trim(explode(',', get_config('tool_aiconnect', 'model'))[0]);
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
         $this->endpoint = trim(get_config('tool_aiconnect', 'endpoint'));
+        $this->format = $format ?? '';
     }
 
     /**
@@ -148,7 +155,7 @@ class ai {
      * @param string $prompttext The prompt text.
      * @return array The prompt data.
      */
-    private function get_prompt_data($prompttext): array {
+    private function get_prompt_data(string $prompttext): array {
             $data = [
                 'model' => $this->model,
                 'temperature' => $this->temperature,
@@ -156,6 +163,9 @@ class ai {
                     ['role' => 'system', 'content' => 'You: ' . $prompttext],
                 ],
             ];
+            if ($this->format == 'json') {
+                $data['response_format'] = ['type' => 'json_object'];
+            }
             return $data;
     }
     /**
