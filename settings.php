@@ -58,7 +58,7 @@ if ($hassiteconfig) {
         'tool_aiconnect/model',
         get_string('model', 'tool_aiconnect'),
         get_string('model_desc', 'tool_aiconnect'),
-        'gpt-4',
+        'gpt-4o,gpt-4-turbo,gpt-4,gpt-3.5-turbo',
     ));
 
     $settings->add(new admin_setting_configtext(
