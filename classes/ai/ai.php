@@ -159,13 +159,15 @@ class ai {
      */
     private function get_prompt_data(string $prompttext): array {
             $data = [
-                'response_format' => ['type' => 'json_object'],
                 'model' => $this->model,
                 'temperature' => $this->temperature,
                 'messages' => [
-                    ['role' => 'system', 'content' => 'You: ' . $prompttext],
+                    ['role' => 'system', 'content' => 'You ' . $prompttext],
                 ],
             ];
+            if (get_config('tool_aiconntect', 'json_format')) {
+                $data['response_format'] = ['type' => 'json_object'];
+            }
             return $data;
     }
     /**

@@ -32,8 +32,11 @@ $string['endpoint_desc'] = 'Endpoint url';
 $string['endpointerror'] = 'Endpoint error';
 $string['frequency_penalty'] = 'Frequency penalty';
 $string['frequency_penalty_desc'] = 'Reduces repetition of words that have already been generated. It counts how many times the word was already used.';
+$string['json_format'] = 'Json format response';
+$string['json_format_text'] = 'Ask remote system to respond in json format, may not work with all models';
 $string['log_requests'] = 'Log requests';
 $string['log_requests_text'] = 'Log the messages part of all requests to the remote AI system. Debug must also be set to Developer. It adds a lot of text to  the logging gsystem.';
+
 $string['make_request'] = 'Make request';
 $string['misssingmodelerror'] = 'No model has been provided for the call';
 $string['model'] = 'Model';

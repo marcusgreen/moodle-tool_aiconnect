@@ -73,6 +73,11 @@ if ($hassiteconfig) {
         get_string('log_requests', 'tool_aiconnect'),
         get_string('log_requests_text', 'tool_aiconnect') , 0));
 
+    $settings->add(new admin_setting_configcheckbox(
+        'tool_aiconnect/log_requests',
+        get_string('json_format', 'tool_aiconnect'),
+        get_string('json_format_text', 'tool_aiconnect') , 0));
+
     $settings->add(new admin_setting_configtext(
         'tool_aiconnect/top_p',
         get_string('top_p', 'tool_aiconnect'),

@@ -38,7 +38,7 @@ class make_request extends \core\event\base {
      * @return \lang_string|string
      */
     public static function get_name() {
-        return get_string('log_requests', 'tool_aiconnect');
+        return get_string('make_request', 'tool_aiconnect');
     }
 
     /**
