@@ -25,6 +25,7 @@
 namespace tool_aiconnect\ai;
 
 use curl;
+use tool_aiconnect\event\make_request;
 use moodle_exception;
 /**
  * Contains most functionality
@@ -99,6 +100,14 @@ class ai {
             "CURLOPT_HTTPHEADER" => $headers,
         ];
         $start = microtime(true);
+        if (debugging('', DEBUG_DEVELOPER) && get_config('tool_aiconnect', 'log_requests')) {
+            $params = [
+                'context' => \context_system::instance(),
+                'other' => $data['messages'][0]['content'],
+            ];
+            $event = make_request::create($params);
+            $event->trigger();
+        }
         $jsonresponse = $curl->post($this->endpoint, json_encode($data), $options);
         $response = json_decode($jsonresponse, true);
         if ($response == null) {

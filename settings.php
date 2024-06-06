@@ -68,7 +68,10 @@ if ($hassiteconfig) {
         0,
         PARAM_FLOAT
     ));
-
+    $settings->add(new admin_setting_configcheckbox(
+        'tool_aiconnect/log_requests',
+        get_string('log_requests', 'tool_aiconnect'),
+        get_string('log_requests_text', 'tool_aiconnect') , 0));
 
     $settings->add(new admin_setting_configtext(
         'tool_aiconnect/top_p',
