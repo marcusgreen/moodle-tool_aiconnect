@@ -64,7 +64,7 @@ class ai {
      *
      * @param string $model
      */
-    public function __construct($model = null) {
+    public function __construct(?string $model = null) {
         $this->model = $model ?? trim(explode(',', get_config('tool_aiconnect', 'model'))[0]);
         $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
@@ -157,8 +157,9 @@ class ai {
      * @param string $prompttext The prompt text.
      * @return array The prompt data.
      */
-    private function get_prompt_data($prompttext): array {
+    private function get_prompt_data(string $prompttext): array {
             $data = [
+                'response_format' => ['type' => 'json_object'],
                 'model' => $this->model,
                 'temperature' => $this->temperature,
                 'messages' => [
