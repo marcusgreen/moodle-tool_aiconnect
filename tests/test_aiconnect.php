@@ -49,6 +49,9 @@ class test_aiconnect extends \advanced_testcase {
      * @return void
      */
     public function setUp(): void {
+        if (defined('TEST_LLM_APIKEY')) {
+            set_config('apikey', TEST_LLM_APIKEY, 'tool_aiconnect');
+        }
         $this->ai = new ai\ai();
     }
     /**
