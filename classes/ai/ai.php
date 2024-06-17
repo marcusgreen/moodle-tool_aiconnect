@@ -38,7 +38,7 @@ class ai {
      *
      * @var string
      */
-    private string $openaiapikey;
+    private string $apikey;
 
     /**
      * LLM Model e.g. llama2 or gpt4
@@ -140,7 +140,7 @@ class ai {
             throw new moodle_exception('misssingmodelerror', 'tool_aiconnect', '', null, 'Empty query model.');
         }
         $data = $this->get_prompt_data($prompttext);
-        $result = $this->make_request($data, $this->openaiapikey);
+        $result = $this->make_request($data, $this->apikey);
 
         if (isset($result['choices'][0]['text'])) {
             return $result['choices'][0]['text'];
