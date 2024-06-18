@@ -39,9 +39,10 @@ class test_aiconnect extends \advanced_testcase {
 
     /**
      * The class with most of the functionality
-     * @var ai
+     * @var $ai
      */
      public $ai;
+
 
     /**
      * Initialise everything
@@ -51,8 +52,8 @@ class test_aiconnect extends \advanced_testcase {
     public function setUp(): void {
         if (defined('TEST_LLM_APIKEY')) {
             set_config('apikey', TEST_LLM_APIKEY, 'tool_aiconnect');
+            $this->ai = new ai\ai();
         }
-        $this->ai = new ai\ai();
     }
     /**
      * Work around the get_prompt_data method
@@ -77,11 +78,17 @@ class test_aiconnect extends \advanced_testcase {
     }
 
      /**
-      * This doesn't do anything especially useful.
+      * Ask the LLM to do some maths
       * @return void
       */
     public function test_prompt_completion(): void {
-        $result = $this->ai->prompt_completion('query');
+        $this->resetAfterTest();
+        if (!$this->ai) {
+            $this->markTestSkipped();
+        }
+        $query = "What is 2 * 4?";
+        $result = $this->ai->prompt_completion($query);
         $this->assertIsArray($result);
+        $this->assertStringContainsString("8", $result['response']['choices'][0]['message']['content']);
     }
 }

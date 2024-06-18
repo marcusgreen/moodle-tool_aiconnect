@@ -66,7 +66,7 @@ class ai {
      */
     public function __construct(?string $model = null) {
         $this->model = $model ?? trim(explode(',', get_config('tool_aiconnect', 'model'))[0]);
-        $this->openaiapikey = get_config('tool_aiconnect', 'apikey');
+        $this->apikey = get_config('tool_aiconnect', 'apikey');
         $this->temperature = get_config('tool_aiconnect', 'temperature');
         $this->endpoint = trim(get_config('tool_aiconnect', 'endpoint'));
     }
@@ -133,12 +133,6 @@ class ai {
      * @throws moodle_exception If the model is empty.
      */
     public function prompt_completion($prompttext) {
-        if (PHPUNIT_TEST) {
-            return [];
-        }
-        if (empty($this->model)) {
-            throw new moodle_exception('misssingmodelerror', 'tool_aiconnect', '', null, 'Empty query model.');
-        }
         $data = $this->get_prompt_data($prompttext);
         $result = $this->make_request($data, $this->apikey);
 
