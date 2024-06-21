@@ -91,4 +91,17 @@ class test_aiconnect extends \advanced_testcase {
         $this->assertIsArray($result);
         $this->assertStringContainsString("8", $result['response']['choices'][0]['message']['content']);
     }
+    /**
+     * Confirm that an array of models are returned.
+     *
+     * @return void
+     */
+    public function test_get_models(): void {
+        $this->resetAfterTest();
+        if (!$this->ai) {
+            $this->markTestSkipped();
+        }
+        $result = $this->ai->get_models();
+        $this->assertIsArray($result->models);
+    }
 }
