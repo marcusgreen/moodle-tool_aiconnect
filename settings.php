@@ -74,7 +74,7 @@ if ($hassiteconfig) {
         get_string('log_requests_text', 'tool_aiconnect') , 0));
 
     $settings->add(new admin_setting_configcheckbox(
-        'tool_aiconnect/log_requests',
+        'tool_aiconnect/json_format',
         get_string('json_format', 'tool_aiconnect'),
         get_string('json_format_text', 'tool_aiconnect') , 0));
 
