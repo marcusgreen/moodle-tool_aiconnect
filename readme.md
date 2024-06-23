@@ -66,6 +66,8 @@ Please note that the availability and functionality of these settings may depend
 ### Error Handling
 The ai class throws moodle_exception exceptions in case of errors. You should handle these exceptions appropriately to provide meaningful feedback to the user.
 
+### Logging and 
+
 PHPTests with the key are being developed and will require the following in config.php
 
 ```
