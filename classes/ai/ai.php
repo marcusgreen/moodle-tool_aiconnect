@@ -193,6 +193,16 @@ class ai {
 
         return $modeldata;
     }
+        /**
+     * Insert row into the aiconnect_queue table
+     * @param string $prompttext
+     * @return int
+     */
+    public function queue_insert(string $prompttext): int {
+        global $DB;
+        $rowid = $DB->insert_record('tool_aiconnect_queue', ['prompttext' => $prompttext, 'timecreated' => time()]);
+        return $rowid;
+    }
 
 }
 
