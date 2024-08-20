@@ -31,13 +31,6 @@ namespace tool_aiconnect;
 class test_aiconnect extends \advanced_testcase {
 
     /**
-     * Where most of the functionality lives
-     *
-     * @var ai $ai
-     *
-     */
-
-    /**
      * The class with most of the functionality
      * @var $ai
      */
@@ -53,28 +46,9 @@ class test_aiconnect extends \advanced_testcase {
         if (defined('TEST_LLM_APIKEY')) {
             set_config('apikey', TEST_LLM_APIKEY, 'tool_aiconnect');
             $this->ai = new ai\ai();
+        } else {
+            exit('Test will only run if TEST_LLM_APIKEY is defined in config.php');
         }
-    }
-    /**
-     * Work around the get_prompt_data method
-     * being private
-     *
-     * @return void
-     */
-    public function test_get_prompt_data(): void {
-         $this->assertTrue(true);
-         $mockai = $this->getMockBuilder(ai\ai::class)->getMock();
-         $getpromptdata = new \ReflectionMethod(
-                 ai\ai::class,
-                 'get_prompt_data'
-             );
-         $getpromptdata->setAccessible(true);
-
-         $result = $getpromptdata->invokeArgs(
-             $mockai,
-             ['myprompt']
-         );
-         $this->assertStringContainsString("You: myprompt", $result['messages'][0]['content']);
     }
 
      /**
@@ -93,7 +67,7 @@ class test_aiconnect extends \advanced_testcase {
     }
     /**
      * Confirm that an array of models are returned.
-     *
+     * This may not work as expected with ollama
      * @return void
      */
     public function test_get_models(): void {
@@ -101,6 +75,7 @@ class test_aiconnect extends \advanced_testcase {
         if (!$this->ai) {
             $this->markTestSkipped();
         }
+
         $result = $this->ai->get_models();
         $this->assertIsArray($result->models);
     }

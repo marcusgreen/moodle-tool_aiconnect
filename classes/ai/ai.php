@@ -132,7 +132,7 @@ class ai {
      * @return string|array The generated completion or null if the model is empty.
      * @throws moodle_exception If the model is empty.
      */
-    public function prompt_completion($prompttext) {
+    public function prompt_completion($prompttext) : array {
         $data = $this->get_prompt_data($prompttext);
         $result = $this->make_request($data, $this->apikey);
 
