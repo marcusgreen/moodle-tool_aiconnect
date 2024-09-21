@@ -15,17 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information. When a new version is released the version is incremented
+ * Scheduled task definitions for AI Connect
+ *
+ * Documentation: {@link https://moodledev.io/docs/apis/subsystems/task}
  *
  * @package    tool_aiconnect
- * @copyright  2024 Marcus Green
+ * @category   task
+ * @copyright  2024 YOUR NAME Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'tool_aiconnect';
-$plugin->version = 2024032012;
-$plugin->requires = 2022112800;
-$plugin->release = '4.1.1';
-
+$tasks = [
+    [
+        'classname' => 'tool_aiconnect\task\llm_feedback',
+        'blocking' => 0,
+        'minute' => '*',
+        'hour' => '*',
+        'day' => '*',
+        'dayofweek' => '*',
+        'month' => '*',
+    ],
+];

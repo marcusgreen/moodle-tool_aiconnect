@@ -56,5 +56,33 @@ function xmldb_tool_aiconnect_upgrade($oldversion) {
         // Aiconnect savepoint reached.
         upgrade_plugin_savepoint(true, 2024032006, 'tool', 'aiconnect');
     }
+    if ($oldversion < 2024032011) {
+
+        // Define field response to be added to tool_aiconnect_queue.
+        $table = new xmldb_table('tool_aiconnect_queue');
+        $field = new xmldb_field('response', XMLDB_TYPE_TEXT, null, null, null, null, null, 'timecreated');
+
+        // Conditionally launch add field response.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Aiconnect savepoint reached.
+        upgrade_plugin_savepoint(true, 2024032011, 'tool', 'aiconnect');
+    }
+    if ($oldversion < 2024032012) {
+
+        // Define field actiondata to be added to tool_aiconnect_queue.
+        $table = new xmldb_table('tool_aiconnect_queue');
+        $field = new xmldb_field('actiondata', XMLDB_TYPE_CHAR, '64', null, null, null, null, 'response');
+
+        // Conditionally launch add field actiondata.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Aiconnect savepoint reached.
+        upgrade_plugin_savepoint(true, 2024032012, 'tool', 'aiconnect');
+    }
     return true;
 }

@@ -14,18 +14,30 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace tool_aiconnect\task;
+
 /**
- * Version information. When a new version is released the version is incremented
+ * Class llm_feedback
  *
  * @package    tool_aiconnect
- * @copyright  2024 Marcus Green
+ * @copyright  2024 YOUR NAME <your@email.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+class llm_feedback extends \core\task\scheduled_task {
 
-defined('MOODLE_INTERNAL') || die();
+    /**
+     * Name for this task.
+     *
+     * @return string
+     */
+    public function get_name() {
+        return get_string('get_llmmfeedback', 'qtype_aitext');
+    }
 
-$plugin->component = 'tool_aiconnect';
-$plugin->version = 2024032012;
-$plugin->requires = 2022112800;
-$plugin->release = '4.1.1';
-
+    /**
+     * Run task for getting llm feedback
+     */
+    public function execute() {
+        mtrace('get_llmfeedback is running');
+    }
+}

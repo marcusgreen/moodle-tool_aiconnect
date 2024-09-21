@@ -115,8 +115,7 @@ class ai {
         }
 
         if (isset($response['error'])) {
-             throw new moodle_exception('endpointerror', 'tool_aiconnect', '', null,
-                $response['error']['message']);
+             throw new moodle_exception($response['error']['message']);
         }
 
         $end = microtime(true);
@@ -193,7 +192,7 @@ class ai {
 
         return $modeldata;
     }
-        /**
+    /**
      * Insert row into the aiconnect_queue table
      * @param string $prompttext
      * @return int
