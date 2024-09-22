@@ -27,7 +27,7 @@ namespace tool_aiconnect\ai;
 
 require_once(__DIR__ . '/../../../config.php');
 
-use \context_system;
+use context_system;
 
 require_login();
 if (!is_siteadmin($USER)) {

@@ -49,8 +49,6 @@ $string['presence_penalty'] = 'Presence penalty';
 $string['presence_penalty_desc'] = 'Similar to frequency penalty, it reduces probability of using a word that was already used.
 The difference is that is does not matter how many times the word was used - just if it was or not.';
 
-// Privacy API.
-
 $string['privacy:metadata:tool_aiconnect'] = 'In order to generate text or image, user needs to pass prompt text and/or image.';
 $string['privacy:metadata:tool_aiconnect:image'] = 'Image is an optional argument you can pass to make a base for generated image.';
 $string['privacy:metadata:tool_aiconnect:prompttext'] = 'User\'s prompt text is being sent to API services to generate response.';
