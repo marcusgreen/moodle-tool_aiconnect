@@ -153,7 +153,7 @@ class ai {
         $data = $this->get_prompt_data($hasriskprompt);
         $result = $this->make_request($data, $this->apikey);
         $isrisk = json_decode($result['response']['choices'][0]['message']['content']);
-        if (property_exists($isrisk, 'injectionrisk') && $isrisk->injectionrisk) {
+        if ($isrisk && property_exists($isrisk, 'injectionrisk') && $isrisk->injectionrisk) {
             $llmresponse = [
                 'response' => [
                     'choices' => [
