@@ -40,7 +40,7 @@ $string['log_requests_text'] = 'Log the messages part of all requests to the rem
 $string['make_request'] = 'Make request';
 $string['misssingmodelerror'] = 'No model has been provided for the call';
 $string['model'] = 'Model';
-$string['model_desc'] = 'The model used to generate the completion.';
+$string['model_desc'] = 'The model used to generate the completion. This must match the models available at the endpoint.';
 
 $string['openaisettings'] = 'OpenAI settings';
 $string['openaisettings_help'] = 'Settings for Large Language Model services';
